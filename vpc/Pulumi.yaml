@@ -3,4 +3,4 @@ runtime:
   name: python
   options:
     virtualenv: venv
-description: Example for the ccreation of a VPC
+description: Example for the creation of a VPC

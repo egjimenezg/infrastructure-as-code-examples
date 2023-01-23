@@ -4,8 +4,9 @@ orbs:
 jobs:
   build:
     docker:
-      - image: alpine:3.15
+      - image: circleci/python:3.7.2
     working_directory: ~/repo
     steps:
       - checkout
       - pulumi/login
+
