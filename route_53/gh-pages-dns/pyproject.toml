@@ -1,0 +1,17 @@
+[project]
+name = "gh-pages-dns"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gamaliel Jimenez",email = "egjimenezg@gmail.com"}
+]
+requires-python = ">=3.14"
+dependencies = [
+    "pulumi (>=3.217.0,<4.0.0)",
+    "pulumi-aws (>=7.16.0,<8.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
