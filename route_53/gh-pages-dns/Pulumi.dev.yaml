@@ -1,2 +1,4 @@
 config:
   aws:region: us-east-1
+  gh-pages-dns:domain: egjimenezg.dev
+  gh-pages-dns:githubPagesTarget: egjimenezg.github.io
