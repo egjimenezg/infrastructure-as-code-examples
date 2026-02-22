@@ -1,0 +1,35 @@
+name: Pulumi
+on:
+  push:
+    branches:
+      - main
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: gh-pages-dns
+            dir: route_53/gh-pages-dns
+            stack: egjimenezg/gh-pages-dns/dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: python -m pip install -r requirements.txt
+        working-directory: ${{ matrix.dir }}
+      - uses: pulumi/actions@v6
+        with:
+          command: up
+          stack-name: ${{ matrix.stack }} # When using an individual account, only use stack-name.
+          work-dir: ${{ matrix.dir }}
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
