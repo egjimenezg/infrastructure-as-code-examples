@@ -3,6 +3,7 @@ on:
   - pull_request
 jobs:
   preview:
+    environment: dev
     name: Preview
     runs-on: ubuntu-latest
     strategy:
