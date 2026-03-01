@@ -1,5 +1,5 @@
 name: gh-pages-dns
-description: A minimal AWS Python Pulumi program
+description: Pulumi project to point a custom domain to GitHub Pages using Amazon Route53.
 runtime:
   name: python
   options:
