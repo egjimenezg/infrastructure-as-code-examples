@@ -2,3 +2,4 @@ config:
   aws:region: us-east-1
   gh-pages-dns:domain: egjimenezg.dev
   gh-pages-dns:githubPagesTarget: egjimenezg.github.io
+  gh-pages-dns:githubPagesChallengeToken: 9965e4ab535844a34e8c0b4cf10995

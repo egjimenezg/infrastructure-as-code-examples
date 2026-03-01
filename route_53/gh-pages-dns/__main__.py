@@ -23,6 +23,7 @@ config = pulumi.Config()
 domain = config.require("domain")
 
 gh_pages_target = config.require("githubPagesTarget")
+challenge_token = config.require("githubPagesChallengeToken")
 
 zone = aws.route53.Zone(
   "primary-zone",
@@ -56,6 +57,15 @@ aws.route53.Record(
   type="CNAME",
   ttl=300,
   records=[gh_pages_target]
+)
+
+aws.route53.Record(
+  "github-pages-domain-verification",
+  zone_id=zone_id,
+  name=f"_github-pages-challenge-egjimenezg.{domain}",
+  type="TXT",
+  ttl=300,
+  records=[challenge_token]
 )
 
 pulumi.export("zoneId", zone_id)
